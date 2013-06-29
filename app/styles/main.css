@@ -1,0 +1,44 @@
+body {
+    background: url('/img/cream_pixels.png') repeat;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #333;
+}
+
+article {
+  background-color: #ebebeb;
+  padding-bottom: 10px;
+}
+
+.shadowed {  
+  border-radius: 4px;  
+  color: rgba(0,0,0, .8);  
+  margin: 15px auto;
+  padding: 1em 1.5em;
+  position: relative;
+  text-shadow: 0 1px 0 #fff;
+}
+
+.shadowed:before, .shadowed:after {
+  background: rgba(0, 0, 0, 0.7); 
+  bottom: 15px;
+  box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
+  content: "";
+  max-width: 50%;
+  position: absolute; 
+  -webkit-transform: rotate(-1deg);
+  top: 80%;
+  width: 50%; 
+  z-index: -1; 
+}
+
+.shadowed:after {
+  left: auto;
+  right: 10px;
+  -webkit-transform: rotate(1deg);
+}
+
+input.input-title {
+    font-size: 28.5px;
+    font-weight: bold;
+    height: auto;
+}

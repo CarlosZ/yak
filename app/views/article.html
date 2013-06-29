@@ -1,0 +1,31 @@
+<article ng-controller="ArticleCtrl" class="shadowed" itemscope itemtype="http://schema.org/Article">
+  <header class="page-header" >
+    <h1 itemprop="headline">
+      {{article.title}}
+      <small><a href="/{{article.id}}" itemprop="url">/{{article.id}}</a></small>
+    </h1>
+
+    <p class="clearfix">
+      <small class="pull-right">
+        <time itemprop="dateCreated" datetime="2009-10-09">
+          Create: {{article.createDate | humanDate}}
+        </time>
+        <time itemprop="dateModified" datetime="2009-10-09">
+          Update: {{article.updateDate | humanDate}}
+        </time>
+      </small>
+    </p>
+   
+    <p class="pull-right btn-group">
+      <a class="btn btn-small" href="" ng-click="edit()">Edit</a>
+      <a class="btn btn-small" href="" ng-click="delete()">Delete</a>
+      <a class="btn btn-small" href="" ng-click="clone()">Clone</a>
+    </p>
+    
+    <p itemprop="keywords">
+      <span ng-repeat="tag in article.tags" class="badge">{{tag}}</span>
+    </p>
+  </header>
+  <p class="well" ng-bind-html-unsafe="article.content | markdown">
+  </p>
+</article>

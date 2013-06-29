@@ -1,0 +1,62 @@
+
+<article ng-controller="ArticleCtrl" class="shadowed" itemscope itemtype="http://schema.org/Article">
+  <header class="page-header" >
+    <h1 itemprop="headline">
+      {{article.title}}
+      <small><a href="/{{article.id}}" itemprop="url">/{{article.id}}</a></small>
+    </h1>
+
+    <p class="clearfix">
+      <small class="pull-right">
+        <time itemprop="dateCreated" datetime="2009-10-09">
+          Create: {{article.createDate | humanDate}}
+        </time>
+        <time itemprop="dateModified" datetime="2009-10-09">
+          Update: {{article.updateDate | humanDate}}
+        </time>
+      </small>
+    </p>
+   
+    <p class="pull-right btn-group">
+      <a class="btn btn-small" href="" ng-click="edit()">Edit</a>
+      <a class="btn btn-small" href="" ng-click="delete()">Delete</a>
+      <a class="btn btn-small" href="" ng-click="clone()">Clone</a>
+    </p>
+    
+    <p itemprop="keywords">
+      <span ng-repeat="tag in article.tags" class="badge">{{tag}}</span>
+    </p>
+  </header>
+  <p class="well" ng-bind-html-unsafe="article.content | markdown">
+  </p>
+</article>
+
+<article ng-controller="NewArticleCtrl" class="shadowed" itemscope itemtype="http://schema.org/Article">
+  <header class="page-header" >
+    <h1 itemprop="headline">
+      <input 
+        class="input-block-level input-title" 
+        type="text" 
+        ng-model="article.title" 
+        placeholder="Title">
+    </h1>
+
+    <p itemprop="keywords">
+      <span ng-repeat="tag in article.tags" class="badge">
+        {{tag}} <i class="icon-remove-sign"></i>
+      </span>
+      <span class="input-append">
+        <input class="input-small" type="text" placeholder="tag" ng-model="newTag"/>
+        <button class="btn" ng-click="addTag()">Add <i class="icon-plus-sign"></i></button>
+      </span>
+    </p>
+  </header>
+  <p class="well">
+    <textarea md-editor ng-model="article.content">
+    </textarea>
+  </p>
+  <p class="pull-right btn-group clearfix">
+    <a class="btn btn-small" href="" ng-click="save()">Save</a>
+    <a class="btn btn-small" href="" ng-click="discard()">Discard</a>
+  </p>
+</article>
