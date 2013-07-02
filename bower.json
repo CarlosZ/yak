@@ -10,7 +10,8 @@
     "angular-cookies": "~1.0.7",
     "angular-sanitize": "~1.0.7",
     "bootstrap-markdown": "latest",
-    "markdown": "~0.4.0"
+    "markdown": "~0.4.0",
+    "jquery-indexeddb": "~0.1.0"
   },
   "devDependencies": {
     "angular-mocks": "~1.0.7",
