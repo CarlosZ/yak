@@ -1,14 +1,20 @@
 'use strict';
 
 angular.module('yakApp')
-  .controller('NewArticleCtrl', function ($scope) {
-    $scope.article = {
-      tags: []
+  .controller('NewArticleCtrl', function ($scope, articleService) {
+    $scope.addTag = function() {
+      $scope.article.tags = $scope.article.tags || [];
+      $scope.article.tags.push($scope.newTag);
+      $scope.newTag = "";
     };
-    var articleStore = $.indexedDB("yakDb").objectStore("article");
-    function persist(article) {
-      articleStore
-        .add(article)
+    $scope.removeTag = function(tag) {
+      var i = $scope.article.tags.indexOf(tag);
+      $scope.article.tags.splice(i, 1);
+    };
+
+    $scope.save = function() {
+      articleService
+        .save($scope.article)
         .done(function(result, event) {
           console.log("result %o", result);
           console.log("event %o", event);
@@ -17,25 +23,5 @@ angular.module('yakApp')
           console.log("error %o", error);
           console.log("event %o", event);
         });
-    }
-
-    $scope.addTag = function() {
-      $scope.article.tags = $scope.article.tags || [];
-      $scope.article.tags.push($scope.newTag);
-      $scope.newTag = "";
-    };
-    $scope.save = function() {
-      $scope.article.createDate = $scope.article.updateDate = Date.now();
-      // validate($scope.article);
-      persist($scope.article);
-      console.log("saving article: ");
-      console.dir($scope.article);
-    };
-    $scope.discard = function() {
-      $scope.article = {
-        tags: []
-      };
-      // hide();
-      console.log("discarding article: ");
     };
   });

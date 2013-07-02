@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('yakApp', [])
+angular.module('yakApp', ['resettableForm'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
@@ -23,9 +23,9 @@ angular.module('yakApp', [])
           transaction
             .createObjectStore("article", {
               autoIncrement: true
-            }).createIndex("id", {
+            }).createIndex("title", {
               unique: true
-            }, "idIdx");
+            }, "titleIdx");
         }
       }
     });
