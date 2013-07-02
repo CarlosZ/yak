@@ -14,4 +14,19 @@ angular.module('yakApp', [])
       .otherwise({
         redirectTo: '/'
       });
+  })
+  .config(function () {
+    $.indexedDB("yakDb", {
+      "version" : 1,
+      "schema" : {
+        "1" : function(transaction){
+          transaction
+            .createObjectStore("article", {
+              autoIncrement: true
+            }).createIndex("id", {
+              unique: true
+            }, "idIdx");
+        }
+      }
+    });
   });
