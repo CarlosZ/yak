@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('yakApp')
-  .controller('NewArticleCtrl', function ($scope, $routeParams, $location, articleService) {
+  .controller('NewArticleCtrl', function ($scope, $routeParams, $location, articleService, alertsService) {
     if ($routeParams.articleId) {
       var articleKey = parseInt($routeParams.articleId);
       articleService
@@ -37,14 +37,16 @@ angular.module('yakApp')
 
       articlePromise
         .done(function(articleKey, event) {
-          console.log("articleKey %o", articleKey);
-          console.log("event %o", event);
-          $location.path("/" + articleKey);
-          $scope.$apply();
+          alertsService
+            .addTimedAlert("Article successfuly saved.", "success")
+            .then(function() {
+              $location.path("/" + articleKey);
+            });
         })
         .fail(function(error, event) {
           if (error) {
-            throw error;
+            alertsService
+              .addTimedAlert("An error occurred trying to save the article. [" + error.name + "]", "error");
           }
         });
     };

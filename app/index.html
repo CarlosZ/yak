@@ -15,6 +15,7 @@
         <!-- endbuild -->
 </head>
   <body ng-app="yakApp">
+    <div class="container" ng-include src="'/views/alerts.html'"></div>
     <!-- Add your site or application content here -->
     <div class="container" ng-view=""></div>
 
@@ -27,25 +28,13 @@
 
         <!-- build:js scripts/plugins.js -->
         <script src="bower_components/jquery/jquery.js"></script>
-        <script src="bower_components/bootstrap-sass/js/bootstrap-affix.js"></script>
-        <script src="bower_components/bootstrap-sass/js/bootstrap-alert.js"></script>
-        <script src="bower_components/bootstrap-sass/js/bootstrap-dropdown.js"></script>
-        <script src="bower_components/bootstrap-sass/js/bootstrap-tooltip.js"></script>
-        <script src="bower_components/bootstrap-sass/js/bootstrap-modal.js"></script>
-        <script src="bower_components/bootstrap-sass/js/bootstrap-transition.js"></script>
-        <script src="bower_components/bootstrap-sass/js/bootstrap-button.js"></script>
-        <script src="bower_components/bootstrap-sass/js/bootstrap-popover.js"></script>
-        <script src="bower_components/bootstrap-sass/js/bootstrap-typeahead.js"></script>
-        <script src="bower_components/bootstrap-sass/js/bootstrap-carousel.js"></script>
-        <script src="bower_components/bootstrap-sass/js/bootstrap-scrollspy.js"></script>
-        <script src="bower_components/bootstrap-sass/js/bootstrap-collapse.js"></script>
-        <script src="bower_components/bootstrap-sass/js/bootstrap-tab.js"></script>
         <script src="bower_components/markdown/lib/markdown.js"></script>
         <script src="bower_components/bootstrap-markdown/js/bootstrap-markdown.js"></script>
         <script src="bower_components/jquery-indexeddb/jquery.indexeddb.js"></script>
         <!-- endbuild -->
 
         <!-- build:js scripts/modules.js -->
+        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
         <script src="bower_components/angular-cookies/angular-cookies.js"></script>
         <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
         <script src="scripts/resettable-form.js"></script>
@@ -55,6 +44,8 @@
         <script src="scripts/directives/md-editor.js"></script>
         <script src="scripts/filters/markdown.js"></script>
         <script src="scripts/services/article-service.js"></script>
+        <script src="scripts/controllers/alerts.js"></script>
+        <script src="scripts/services/alerts-service.js"></script>
         <!-- endbuild -->
 </body>
 </html>

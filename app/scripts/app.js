@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('yakApp', ['resettableForm'])
+angular.module('yakApp', ['resettableForm', 'ui.bootstrap'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
