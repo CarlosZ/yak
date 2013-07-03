@@ -11,6 +11,14 @@ angular.module('yakApp', ['resettableForm'])
         templateUrl: 'views/new-article.html',
         controller: 'NewArticleCtrl'
       })
+      .when('/edit/:articleId', {
+        templateUrl: 'views/new-article.html',
+        controller: 'NewArticleCtrl'
+      })
+      .when('/:articleId', {
+        templateUrl: 'views/article.html',
+        controller: 'ArticleCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -29,4 +37,7 @@ angular.module('yakApp', ['resettableForm'])
         }
       }
     });
+  })
+  .config(function ($locationProvider) {
+    //$locationProvider.html5Mode(true);
   });

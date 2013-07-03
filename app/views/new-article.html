@@ -1,10 +1,10 @@
 <article ng-zcontroller="NewArticleCtrl" class="shadowed" itemscope itemtype="http://schema.org/Article">
-  <form name="article" novalidate>
+  <form name="articleForm" novalidate>
     <header class="page-header" >
       <h1 itemprop="headline">
-        <input 
-          class="input-block-level input-title" 
-          type="text" 
+        <input
+          class="input-block-level input-title"
+          type="text"
           ng-model="article.title"
           required
           placeholder="Title">
@@ -22,19 +22,19 @@
     </header>
     <p class="well">
       <textarea md-editor ng-model="article.content">
+        {{article.content}}
       </textarea>
     </p>
     <p class="pull-right btn-group clearfix">
-      <button 
-        class="btn btn-small" 
-        ng-click="save()" 
-        ng-disabled="article.$pristine || article.$invalid">
+      <button
+        class="btn btn-small"
+        ng-click="save()"
+        ng-disabled="articleForm.$pristine || articleForm.$invalid">
           Save
       </button>
-      <button 
-        class="btn btn-small" 
-        ng-click="article.$setPristine()"
-        ng-disabled="article.$pristine">
+      <button
+        class="btn btn-small"
+        ng-click="discard()">
           Discard
       </button>
     </p>
